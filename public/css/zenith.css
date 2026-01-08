@@ -1,0 +1,346 @@
+/* zenith.css - ZenithTix User Experience */
+
+:root {
+    --primary-gold: #ffd43b;
+    --bg-dark: #0a0a0a;
+    --card-dark: #141414;
+    --text-muted: #888;
+}
+/* Glassmorphism Navbar */
+.navbar-glass {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    
+    /* Efek Kaca Transparan */
+    background: rgba(15, 15, 15, 0.65) !important; 
+    
+    /* Ini yang bikin blur di belakangnya */
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    
+    /* Garis tipis biar kelihatan elegan */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    
+    /* Shadow lembut */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    
+    padding: 12px 0;
+    transition: all 0.4s ease;
+}
+
+/* Biar Nav-link juga cakep */
+.nav-center a {
+    position: relative;
+    padding: 5px 10px;
+}
+
+.nav-center a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ffd43b;
+    transition: 0.3s;
+    transform: translateX(-50%);
+}
+
+.nav-center a:hover::after {
+    width: 80%;
+}
+/* Movie Grid & Card Enhancements */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Ukuran lebih lebar dikit */
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.movie-card-custom {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+.movie-card-custom:hover {
+    transform: translateY(-15px) scale(1.02);
+    border-color: #ffd43b;
+    box-shadow: 0 20px 40px rgba(255, 212, 59, 0.15);
+}
+
+/* Poster Wrapper */
+.poster-wrapper {
+    position: relative;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+}
+
+.poster-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.movie-card-custom:hover .poster-wrapper img {
+    transform: scale(1.1) rotate(2deg);
+    filter: brightness(0.4);
+}
+
+/* Badge Rating di Atas Poster */
+.rating-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    color: #ffd43b;
+    padding: 5px 12px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 12px;
+    border: 1px solid rgba(255, 212, 59, 0.3);
+    z-index: 2;
+}
+
+/* Detail Info */
+.movie-info-custom {
+    padding: 20px;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9));
+}
+
+.movie-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #fff;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.movie-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.meta-item {
+    font-size: 11px;
+    color: #bbb;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.meta-item i {
+    color: #ffd43b;
+}
+
+.genre-pill {
+    background: rgba(255, 212, 59, 0.1);
+    color: #ffd43b;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Overlay Button */
+.btn-detail-glass {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    transition: all 0.4s ease;
+    background: #ffd43b;
+    color: #000;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+    z-index: 3;
+}
+
+.movie-card-custom:hover .btn-detail-glass {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+/* Card Glass untuk Home/Movie Card */
+.form-glass, .movie-card-custom {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    margin: 0;
+    font-family: 'Inter', sans-serif; /* Pastikan ada font ini atau ganti sans-serif */
+}
+
+.homepage-wrapper {
+    background-color: var(--bg-dark);
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.text-yellow { color: var(--primary-gold); }
+
+/* Hero Section */
+.hero-section {
+    background: radial-gradient(circle at top right, rgba(255, 212, 59, 0.05), transparent);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.btn-zenith-primary {
+    background: var(--primary-gold); 
+    color: #000 !important; 
+    padding: 14px 35px; 
+    border-radius: 12px; 
+    font-weight: 800; 
+    text-decoration: none; 
+    transition: 0.3s ease;
+    display: inline-block;
+}
+
+.btn-zenith-ghost {
+    border: 1px solid rgba(255,255,255,0.2); 
+    color: #fff !important; 
+    padding: 14px 35px; 
+    border-radius: 12px; 
+    font-weight: 600; 
+    text-decoration: none; 
+    transition: 0.3s ease;
+    display: inline-block;
+}
+
+.btn-zenith-primary:hover { 
+    background: #fff; 
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(255, 212, 59, 0.2);
+}
+
+.btn-zenith-ghost:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: #fff;
+}
+
+/* Featured Poster */
+.featured-poster-frame {
+    position: relative;
+    width: 320px; 
+    height: 460px;
+    border-radius: 20px; 
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    transform: rotate(3deg);
+    transition: 0.5s ease;
+}
+
+.featured-poster-frame:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.featured-poster-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Catalog Section */
+.catalog-section {
+    padding: 80px 0;
+}
+
+.accent-line { width: 50px; height: 4px; background: var(--primary-gold); border-radius: 2px; }
+.section-title { font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 1.5rem; }
+
+/* Movie Grid */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.movie-card-custom {
+    background: var(--card-dark);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.movie-card-custom:hover {
+    transform: translateY(-15px);
+    border-color: rgba(255,212,59,0.4);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.poster-wrapper {
+    position: relative;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+}
+
+.poster-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+.card-overlay {
+    position: absolute; 
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    opacity: 0; 
+    transition: 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.poster-wrapper:hover .card-overlay { opacity: 1; }
+
+.btn-detail {
+    background: var(--primary-gold); 
+    color: #000; 
+    padding: 10px 25px;
+    border-radius: 8px; 
+    font-weight: 700; 
+    text-decoration: none;
+    transform: translateY(20px);
+    transition: 0.4s ease;
+}
+
+.poster-wrapper:hover .btn-detail {
+    transform: translateY(0);
+}
+
+.movie-info-custom { padding: 20px; }
+.movie-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #fff; }
+.movie-genre { font-size: 0.85rem; color: var(--text-muted); }
+.movie-rating { font-size: 0.85rem; font-weight: 600; color: var(--primary-gold); }
